@@ -19,7 +19,7 @@ export default class SignUp extends React.Component {
       <div className="SignUp">
         <Dialog open={true}  aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">
-            Juguemos a Lengua-Mática
+            Juguemos a Matematica
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
