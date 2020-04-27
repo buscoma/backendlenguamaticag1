@@ -1,6 +1,6 @@
 # LenguaMaticaG1
 
-![LenguaMaticaG1](https://raw.githubusercontent.com/buscoma/lenguamaticag1/master/public/logox256.png)
+![LenguaMaticaG1](https://raw.githubusercontent.com/buscoma/matematicag1/master/public/logox256.png)
 
 ## Aplicación de Lengua y Matemática
 
@@ -15,4 +15,4 @@
 
 Site productivo de la APP hosteado en [Heroku](https://www.heroku.com)
 
-[https://lenguamaticag1.herokuapp.com/](https://lenguamaticag1.herokuapp.com/)
+[https://matematicag1.herokuapp.com/](https://matematicag1.herokuapp.com/)
