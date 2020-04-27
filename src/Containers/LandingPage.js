@@ -37,7 +37,7 @@ class LandingPage extends Component {
         
           <Navbar User={user} />
 
-          <h1> LenguaMatica!</h1>
+          <h1>Juego de Matematica!</h1>
 
           <TrippleButton onClick={this.toggleRankingListHandler} />
           

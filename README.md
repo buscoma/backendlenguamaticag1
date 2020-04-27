@@ -1,6 +1,6 @@
-# LenguaMaticaG1
+# MatematicaG1
 
-![LenguaMaticaG1](https://raw.githubusercontent.com/buscoma/matematicag1/master/public/logox256.png)
+![MatematicaG1](https://raw.githubusercontent.com/buscoma/matematicag1/master/public/logox256.png)
 
 ## Aplicación de Lengua y Matemática
 

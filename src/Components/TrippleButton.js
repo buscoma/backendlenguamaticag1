@@ -8,12 +8,6 @@ import rankingImg from '../Images/ranking.jpg';
 
 const images = [
   {
-    url: lenguaImg,
-    title: 'Lengua',
-    width: '20%',
-    href: '/leng_game_one'
-  },
-  {
     url: mathImg,
     title: 'Matemática',
     width: '20%',
