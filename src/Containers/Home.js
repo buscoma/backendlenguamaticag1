@@ -3,35 +3,28 @@ import { Button, Container, Typography } from "@material-ui/core";
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { AuthContext } from "../Components/Auth.js";
 import Login from "../Components/Login.js";
-import SignUp from "../Components/SignUp.js"
+import SignUp from "../Components/SignUp.js";
 import Background from "../Images/background.jpg";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import {TitleH1, ButtomDEfualt,ContainerCenter} from '../css/BaseStyle.js';
 
-const theme = createMuiTheme();
 
-theme.typography.h1 = {
-  fontSize: '1.2rem',
-  '@media (min-width:600px)': {
-    fontSize: '4rem',
-  },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '2rem',
-  },
+const root = {
+  
+ backgroundImage: `url(${Background})`,
+  backgroundSize: "cover",
+  height: "100vh",
+  display: "flex",
+  backgroundAttachment: "fixed",
+  backgroundRepeat: "no-repeat",
 };
 
+
 const useStyles = makeStyles({
-  root: {
-    backgroundImage: `url(${Background})`,
-    backgroundSize: "cover",
-    height: "100vh",
-    display: "flex",
-    backgroundAttachment: "fixed",
-    backgroundRepeat: "no-repeat",
-  },
-  container: {
-    alignSelf: "center",
-    justifyContent: 'center',
-    textAlign: "center",
-  }
+  root,
+  TitleH1,
+  label:ButtomDEfualt,
+  container: ContainerCenter
 });
 
 export default function Home(props) {
@@ -50,13 +43,15 @@ export default function Home(props) {
   }
   return (
     <div className={classes.root}>
+      <CssBaseline />
       <Container className={classes.container}>
-        <ThemeProvider theme={theme}>
-        <Typography variant="h1">LenguaMatica</Typography>
+        <ThemeProvider >
+        <Typography className={classes.TitleH1}  >LenguaMatica</Typography>
         </ThemeProvider>
         <Button
           onClick={handleLoginClick}
           variant="contained" 
+          className={classes.label}
           color="primary"
         >
           Comencemos a Jugar!

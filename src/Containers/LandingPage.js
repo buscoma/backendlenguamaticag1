@@ -3,6 +3,7 @@ import '../css/LandingPage.css';
 import TrippleButton from '../Components/TrippleButton';
 import RankingList from '../Components/RankingList';
 import Navbar from '../Components/NavBar'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class LandingPage extends Component {
 
@@ -34,7 +35,7 @@ class LandingPage extends Component {
 
     return (      
         <div className="LandingPage">
-        
+          <CssBaseline />
           <Navbar User={user} />
 
           <h1>Juego de Matematica!</h1>
