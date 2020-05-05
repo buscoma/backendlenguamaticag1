@@ -10,6 +10,7 @@ import {WoodGrain} from '../Images/';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {AvatarZombie} from '../Images';
+import app from "../base.js"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,6 +58,7 @@ export default function NavBar(props) {
 
     const handleBack = () => {
         console.log('handleBackClicked');
+        app.auth().signOut()
     }
 
     const handleHome = () => {
