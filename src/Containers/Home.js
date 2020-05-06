@@ -6,12 +6,11 @@ import Login from "../Components/Login.js";
 import SignUp from "../Components/SignUp.js";
 import Background from "../Images/background.jpg";
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {TitleH1, ButtomDEfualt,ContainerCenter} from '../css/BaseStyle.js';
+import {TitleH1, ButtomDefualt,ContainerCenter} from '../css/BaseStyle.js';
 
 
 const root = {
-  
- backgroundImage: `url(${Background})`,
+  backgroundImage: `url(${Background})`,
   backgroundSize: "cover",
   height: "100vh",
   display: "flex",
@@ -23,7 +22,7 @@ const root = {
 const useStyles = makeStyles({
   root,
   TitleH1,
-  label:ButtomDEfualt,
+  label:ButtomDefualt,
   container: ContainerCenter
 });
 

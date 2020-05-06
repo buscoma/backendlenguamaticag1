@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import app from "../base.js";
 import { AuthContext } from "./Auth.js";
@@ -32,6 +32,7 @@ export default function SignUp(props){
       console.log({email: values.email, password: values.password})  
       try {
         app.auth().createUserWithEmailAndPassword(values.email, values.password);
+        
         history.push("/landing_page");
       } catch (error) {
         alert(error)

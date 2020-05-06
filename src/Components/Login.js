@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 // import { Redirect } from "react-router";
 import { useHistory, Redirect } from "react-router-dom";
 import app from "../base.js";
@@ -29,15 +29,20 @@ export default function Login(props){
     password: "",
   });
   const history = useHistory();
-  const handleSubmit = () => {
-      console.log({email: values.email, password: values.password})  
+  const handleSubmit = useCallback(
+    async event => {
+      event.preventDefault();
       try {
-        app.auth().signInWithEmailAndPassword(values.email, values.password);
+        await app
+          .auth()
+          .signInWithEmailAndPassword(values.email, values.password);
         history.push("/landing_page");
       } catch (error) {
-        alert(error)
+        alert(error);
       }
-  };
+    },
+    [history, values]
+  );
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -53,7 +58,7 @@ export default function Login(props){
   return (
     <div className={classes.root}>
       <Dialog open={true} className={classes.dialog} onBackdropClick={props.show}>
-        <form onSubmit={() => handleSubmit()} noValidate autoComplete="on">
+        <form onSubmit={handleSubmit} noValidate autoComplete="on">
           <div>
             <TextField
               className={classes.textField}

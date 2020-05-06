@@ -11,7 +11,7 @@ const TitleH1 = {
     },
 }
 
-const ButtomDEfualt = {
+const ButtomDefualt = {
     /* MOBILE */
     fontSize: '1.5rem',
     padding: '1rem',
@@ -50,6 +50,6 @@ const ContainerCenter = {
 
 export {
     TitleH1,
-    ButtomDEfualt,
+    ButtomDefualt,
     ContainerCenter
 }
