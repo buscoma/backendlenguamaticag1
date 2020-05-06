@@ -1,36 +1,33 @@
 import React, { useContext, useState, useCallback } from "react";
-// import { Redirect } from "react-router";
 import { useHistory, Redirect } from "react-router-dom";
 import app from "../base.js";
 import { AuthContext } from "./Auth.js";
-import { TextField, Button, Dialog, Typography} from "@material-ui/core";
-import {makeStyles} from '@material-ui/core/styles';
+import { TextField, Button, Dialog, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-root: {
-  display: "flex",
-  flexWrap: "wrap",
-},
-textField: {
-  alignSelf: "center",
-  width: "50ch",
-},
-button: {
-  alignSelf: "center",
-  justify: "center",
-},
-dialog: {
-},
-});
-
-export default function Login(props){
+export default function Login(props) {
+  const useStyles = makeStyles({
+    root: {
+      display: "flex",
+      flexWrap: "wrap",
+    },
+    textField: {
+      alignSelf: "center",
+      width: "50ch",
+    },
+    button: {
+      alignSelf: "center",
+      justify: "center",
+    },
+    dialog: {},
+  });
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
   const history = useHistory();
   const handleSubmit = useCallback(
-    async event => {
+    async (event) => {
       event.preventDefault();
       try {
         await app
@@ -51,13 +48,17 @@ export default function Login(props){
     props.showSignUp();
   };
   const classes = useStyles(props);
-  const {currentUser} = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   if (currentUser) {
     return <Redirect to="/landing_page" />;
   }
   return (
     <div className={classes.root}>
-      <Dialog open={true} className={classes.dialog} onBackdropClick={props.show}>
+      <Dialog
+        open={true}
+        className={classes.dialog}
+        onBackdropClick={props.show}
+      >
         <form onSubmit={handleSubmit} noValidate autoComplete="on">
           <div>
             <TextField
