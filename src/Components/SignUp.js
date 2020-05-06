@@ -7,28 +7,21 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import RegistrarLogo from '../Images/jugar.svg';
+import CloseLogo from '../Images/interfaz.svg';
 import Typography from '@material-ui/core/Typography';
-
+import {TitleH2, ButtomDEfualt, TextBold} from '../css/BaseStyle.js';
+import {paperScrollPaper,buttom,  paper, logo, logoClose} from '../css/BaseLineDialog';
 
 const useStyles = makeStyles({
   root:{
     padding:'1rem',
   },
-  paperScrollPaper:{
-    maxHeight:'unset',
-    height:'100%',
-    width:'100vw',
-    overflow:'hidden'
-  },
-  paper:{
-    margin:'0px',
-    display:'flex',justifyContent:'center'
-
-  },
-  logo:{
-    height: '25vh',
-    width: '25vw'
-  }
+  paperScrollPaper,
+  paper,
+  logo,logoClose,
+  TitleH2,
+  TextBold,
+  buttom
 });
 
 
@@ -51,6 +44,7 @@ export default function SignUp(props){
     setValues({ ...values, [prop]: event.target.value });
   };
   const classes = useStyles(props);
+
   
   const {currentUser} = useContext(AuthContext);
   if (currentUser) {
@@ -58,15 +52,18 @@ export default function SignUp(props){
   }
   return (
   
-      <Dialog    open={true} classes={classes}  onBackdropClick={props.show}>
+      <Dialog  open={true} classes={classes}  onBackdropClick={props.show}>
         <form onSubmit={() => handleSubmit()} noValidate autoComplete="on">
-          <Container>
-            <Grid container spacing={2} justify="center" style={{height:'100%'}} alignItems="center" >
-              <Grid item xs={12} style={{textAlign:'center'}} >
-                <img src={RegistrarLogo} style={{height:'30vh',width:'30vh'}} alt="React Logo" />
+          <Container  >
+            <Grid container spacing={2}  alignItems="center" >
+              <Grid item xs={12} style={{textAlign:'right'}} >
+                <img src={CloseLogo}  className={classes.logoClose}  alt="React Logo" />
               </Grid>
               <Grid item xs={12} style={{textAlign:'center'}} >
-              <Typography >Registrate para jugar!!</Typography> 
+                <img src={RegistrarLogo} className={classes.logo}  alt="React Logo" />
+              </Grid>
+              <Grid item xs={12} style={{textAlign:'center'}} >
+              <Typography className={classes.TitleH2 + " " + classes.TextBold}  >Registrate para jugar!!</Typography> 
               </Grid>
               <Grid item xs={12} justify="strech" alignItems="center" style={{textAlign:'center'}}>
                 <TextField
@@ -90,7 +87,7 @@ export default function SignUp(props){
               </Grid>
               <Grid item xs={12} justify="center" alignItems="center" style={{textAlign:'center'}}>
                 <Button
-                  className={classes.button}
+                  className={classes.buttom}
                   variant="outlined"
                   type="submit"
                   color="primary"
