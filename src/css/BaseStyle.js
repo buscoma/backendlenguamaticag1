@@ -19,7 +19,7 @@ const ButtomDEfualt = {
      /* TABLET */
     '@media (min-width: 768px)': {
         fontSize: '2rem',
-        padding:'2rem'
+        padding:'1rem'
     },
 }
 
@@ -42,7 +42,7 @@ const ContainerCenter = {
         padding:'2rem',
         alignSelf: "Center",
         textAlign:'center',
-        display:'init'
+        maxWidth:'900px'
     },
 
     

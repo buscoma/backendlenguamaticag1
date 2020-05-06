@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Button, Container, Typography } from "@material-ui/core";
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles,  ThemeProvider } from '@material-ui/core/styles';
 import { AuthContext } from "../Components/Auth.js";
 import Login from "../Components/Login.js";
 import SignUp from "../Components/SignUp.js";
@@ -10,8 +10,7 @@ import {TitleH1, ButtomDEfualt,ContainerCenter} from '../css/BaseStyle.js';
 
 
 const root = {
-  
- backgroundImage: `url(${Background})`,
+  backgroundImage: `url(${Background})`,
   backgroundSize: "cover",
   height: "100vh",
   display: "flex",

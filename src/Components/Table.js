@@ -75,7 +75,7 @@ function AutoGridNoWrap(props) {
     </div>
   );
 }
-  
+
 
 export default function TableResponsive(){
 
@@ -129,7 +129,8 @@ export default function TableResponsive(){
                 </Grid>
               </Grid>
               <Grid item xs={12}  >
-                {row.map((data) => <AutoGridNoWrap posicion={data.posicion} nombre={data.nombre} puntos={data.puntos} />)}
+                {row.map((data) => 
+                <AutoGridNoWrap posicion={data.posicion} nombre={data.nombre} puntos={data.puntos} />)}
               </Grid>
             </Grid>          
           </Container>}
