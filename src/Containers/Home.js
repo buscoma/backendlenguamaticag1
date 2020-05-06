@@ -40,7 +40,7 @@ export default function Home(props) {
     console.log({ currentUser: currentUser });
   }
   return (
-    <Container className={classes.root}>
+    <div className={classes.root}>
       <CssBaseline />
       <Container className={classes.container}>
         <ThemeProvider>
@@ -59,6 +59,6 @@ export default function Home(props) {
         ) : null}
         {dialogSignUp ? <SignUp show={handleSignUpClick} /> : null}
       </Container>
-    </Container>
+    </div>
   );
 }
