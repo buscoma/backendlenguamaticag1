@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-// import { Redirect } from "react-router";
+import React, { useContext, useState, useCallback } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import app from "../base.js";
 import { AuthContext } from "./Auth.js";
+
 import { TextField, Button, Dialog, Typography} from "@material-ui/core";
 import {makeStyles} from '@material-ui/core/styles';
 import {TitleH2, TextBold} from '../css/BaseStyle.js';
@@ -11,23 +11,6 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import RegistrarLogo from '../Images/jugar.svg';
 import CloseLogo from '../Images/interfaz.svg';
-/*
-const useStyles = makeStyles({
-root: {
-  display: "flex",
-  flexWrap: "wrap",
-},
-textField: {
-  alignSelf: "center",
-  width: "50ch",
-},
-button: {
-  alignSelf: "center",
-  justify: "center",
-},
-dialog: {
-},
-});*/
 
 const useStyles = makeStyles({
   root:{
@@ -43,20 +26,26 @@ const useStyles = makeStyles({
 });
 
 export default function Login(props){
+  
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
   const history = useHistory();
-  const handleSubmit = () => {
-      console.log({email: values.email, password: values.password})  
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
       try {
-        app.auth().signInWithEmailAndPassword(values.email, values.password);
+        await app
+          .auth()
+          .signInWithEmailAndPassword(values.email, values.password);
         history.push("/landing_page");
       } catch (error) {
-        alert(error)
+        alert(error);
       }
-  };
+    },
+    [history, values]
+  );
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -65,7 +54,7 @@ export default function Login(props){
     props.showSignUp();
   };
   const classes = useStyles(props);
-  const {currentUser} = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   if (currentUser) {
     return <Redirect to="/landing_page" />;
   }

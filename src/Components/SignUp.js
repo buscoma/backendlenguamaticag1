@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import app from "../base.js";
 import { AuthContext } from "./Auth.js";
@@ -31,15 +31,20 @@ export default function SignUp(props){
     password: "",
   });
   const history = useHistory();
-  const handleSubmit = () => {
-      console.log({email: values.email, password: values.password})  
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
       try {
-        app.auth().createUserWithEmailAndPassword(values.email, values.password);
+        await app
+          .auth()
+          .createUserWithEmailAndPassword(values.email, values.password);
         history.push("/landing_page");
       } catch (error) {
-        alert(error)
+        alert(error);
       }
-  };
+    },
+    [history, values]
+  );
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -102,10 +107,3 @@ export default function SignUp(props){
     
   );
 }
-
-
-
-/*
- 
-
-*/

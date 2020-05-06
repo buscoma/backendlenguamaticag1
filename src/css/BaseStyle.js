@@ -3,6 +3,7 @@ const TitleH1 = {
     fontSize: '2.5rem',
     padding: '1rem',
     color:'white',
+    textAlign: "center",
     textShadow: '4px 4px 4px black',
     /* TABLET */
     '@media (min-width: 768px)': {
@@ -34,7 +35,8 @@ const TextBold = {
     fontWeight: 'bold',
 }
 
-const ButtomDEfualt = {
+
+const ButtomDefualt = {
     /* MOBILE */
     fontSize: '1.5rem',
     padding: '1rem',
@@ -79,6 +81,6 @@ export {
     TextWhiteShadow,
     TextBlackShadow,
     TextBold,
-    ButtomDEfualt,
+    ButtomDefualt,
     ContainerCenter
 }
