@@ -45,7 +45,7 @@ export default function Home(props) {
       <CssBaseline />
       <Container className={classes.container}>
         <ThemeProvider >
-        <Typography className={classes.TitleH1}  >Matemática</Typography>
+        <Typography className={classes.TitleH1}>Matemática</Typography>
         </ThemeProvider>
         <Button
           onClick={handleLoginClick}
