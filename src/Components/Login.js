@@ -8,8 +8,7 @@ import {TitleH2, TextBold} from '../css/BaseStyle.js';
 import {paperScrollPaper, buttom, paper, logo, logoClose, input} from '../css/BaseLineDialog';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import RegistrarLogo from '../Images/jugar.svg';
-import CloseLogo from '../Images/interfaz.svg';
+import {RegistrarLogo, CloseLogo} from '../Images';
 
 export default function Login(props){
   const [values, setValues] = useState({

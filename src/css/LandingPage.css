@@ -1,6 +1,22 @@
-.LandingPage {
-    text-align: center;
-    background-color: #79cbe4;
-    color: white;
-  }
+
+.LenguaMatica {
+  background-color: #efefef;
+  padding: 20px;
+  text-align: center;
+  color: black;
+  font-family: 'Franklin Gothic Medium';
+  font-size: xx-large;
+}
+
+.mainBox{
+  background-image: url("../Images/background.jpg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   
+  padding: 20px;
+
+  width: 100%;
+  height: 90vh;
+  margin: 0 auto;
+  text-align: center;
+}

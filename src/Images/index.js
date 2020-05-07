@@ -12,6 +12,8 @@ export const AvatarPencil = require('./avatars/pencil.webp');
 export const AvatarCoffee = require('./avatars/coffee.webp');
 export const AvatarCactus = require('./avatars/cactus.webp');
 export const AvatarAvocado = require('./avatars/avocado.webp');
+export const RegistrarLogo = require('../Images/jugar.svg');
+export const CloseLogo = require('../Images/interfaz.svg');
 export const Avatars = [
     {
         alt: "ufo",
