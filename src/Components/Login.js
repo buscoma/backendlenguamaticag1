@@ -2,7 +2,6 @@ import React, { useContext, useState, useCallback } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import app from "../base.js";
 import { AuthContext } from "./Auth.js";
-
 import { TextField, Button, Dialog, Typography} from "@material-ui/core";
 import {makeStyles} from '@material-ui/core/styles';
 import {TitleH2, TextBold} from '../css/BaseStyle.js';
@@ -12,24 +11,22 @@ import Container from '@material-ui/core/Container';
 import RegistrarLogo from '../Images/jugar.svg';
 import CloseLogo from '../Images/interfaz.svg';
 
-const useStyles = makeStyles({
-  root:{
-    padding:'1rem',
-  },
-  paperScrollPaper,
-  paper,
-  logo,logoClose,
-  TitleH2,
-  TextBold,
-  buttom,
-  input
-});
-
 export default function Login(props){
-  
   const [values, setValues] = useState({
     email: "",
     password: "",
+  });
+  const useStyles = makeStyles({
+    root:{
+      padding:'1rem',
+    },
+    paperScrollPaper,
+    paper,
+    logo,logoClose,
+    TitleH2,
+    TextBold,
+    buttom,
+    input
   });
   const history = useHistory();
   const handleSubmit = useCallback(
@@ -59,13 +56,12 @@ export default function Login(props){
     return <Redirect to="/landing_page" />;
   }
   return (
-
       <Dialog open={true}  classes={classes} onBackdropClick={props.show}>
-        <form onSubmit={() => handleSubmit()} noValidate autoComplete="on">
+        <form onSubmit={handleSubmit} noValidate autoComplete="on">
         <Container  >
             <Grid container spacing={2}   alignItems="center" >
               <Grid item xs={12} style={{textAlign:'right'}} >
-                <img src={CloseLogo} className={classes.logoClose} alt="React Logo" />
+                <img src={CloseLogo} onClick={props.show} className={classes.logoClose} alt="React Logo" />
               </Grid>
               <Grid item xs={12} style={{textAlign:'center'}} >
                 <img src={RegistrarLogo} style={{height:'15vh',width:'15vh'}} alt="React Logo" />
@@ -116,11 +112,9 @@ export default function Login(props){
                   Register
                 </Button>
               </Grid>
-              
             </Grid>
           </Container>
         </form>
       </Dialog>
-
   );
 }
