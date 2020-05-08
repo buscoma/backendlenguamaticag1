@@ -30,6 +30,10 @@ const json = [
     {
         name:'MathGameOne',
         descripcion:'Bienvenido a este juego. El objetivo es que toques los botones en orden asendente.Suerte'
+    },
+    {
+        name:'Burger',
+        descripcion:'Bienvenido a este juego. El objetivo es que toques los botones en orden asendente.Suerte'
     }
 ];
 

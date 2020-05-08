@@ -3,7 +3,7 @@ import { Paper, Typography, Button } from "@material-ui/core";
 import Burger from "../../Components/Burger/Burger";
 import BuildControls from "../../Components/Burger/BuildControls/BuildControls";
 import "./BurgerBuilder.css";
-
+import DialogMen from "../../Components/Dialog/Dialog";
 import DialogOperacion from "../../Components/Burger/DialogOperacion";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -98,7 +98,7 @@ class BurgerBuilder extends Component {
         operacion: this.recuperarOperacion(nivel),
       };
   };
-
+  
   state = {
     nivel: this.configurarNivel(1),
     ingredients: {
@@ -109,7 +109,12 @@ class BurgerBuilder extends Component {
     },
     openDialog: false,
     perdiste: false,
+    startGame : true,
   };
+
+  handleStartGame = () => {
+    this.setState({startGame: false});
+  }
 
   addIngridientHandler = (type) => {
     this.setState({
@@ -236,8 +241,8 @@ class BurgerBuilder extends Component {
 
     return (
       <div className="BurgerBuilder">
-              <CssBaseline />
-
+        {this.state.startGame ? <DialogMen bienvenida={this.state.startGame} show={this.handleStartGame}  volverPagAnterior="landing_page"   tipo="Burger" nivel={this.state.nivel.numero}  /> : null}
+        <CssBaseline />
         <Paper className="OrderDetail" elevation={4}>
           <Typography variant="h6">Nivel {this.state.nivel.numero}</Typography>
           <Typography variant="inherit">
