@@ -3,12 +3,23 @@ import { Paper, Typography, Button } from "@material-ui/core";
 import Burger from "../../Components/Burger/Burger";
 import BuildControls from "../../Components/Burger/BuildControls/BuildControls";
 import "./BurgerBuilder.css";
+
 import DialogOperacion from "../../Components/Burger/DialogOperacion";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+
+
+
 
 class BurgerBuilder extends Component {
+  
+  
+
   randomInt = (min, max) => {
     return min + Math.floor((max - min) * Math.random());
   };
+
+  
 
   recuperarOperacion = (nivel) => {
     console.log("recuperarOperacion called");
@@ -225,6 +236,8 @@ class BurgerBuilder extends Component {
 
     return (
       <div className="BurgerBuilder">
+              <CssBaseline />
+
         <Paper className="OrderDetail" elevation={4}>
           <Typography variant="h6">Nivel {this.state.nivel.numero}</Typography>
           <Typography variant="inherit">
@@ -236,20 +249,31 @@ class BurgerBuilder extends Component {
           </Typography>
         </Paper>
         <Burger ingredients={this.state.ingredients} />
-        <BuildControls
-          ingridientAdded={this.addIngridientHandler}
-          ingridientRemoved={this.removeIngridientHandler}
-          disabled={disabledInfo}
-          ingredients={this.state.ingredients}
-        ></BuildControls>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => this.handleBotonOrdenar()}
-          className="OrderButton"
-        >
-          Marchar pedido!
-        </Button>
+        
+        <Grid container spacing={2} justify="center"  alignItems="center">
+          <Grid item xs={12} md={8}>
+            <BuildControls
+                        ingridientAdded={this.addIngridientHandler}
+                        ingridientRemoved={this.removeIngridientHandler}
+                        disabled={disabledInfo}
+                        ingredients={this.state.ingredients}
+                      ></BuildControls>
+          </Grid>
+          <Grid item xs={12} md={4}>
+              <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={() => this.handleBotonOrdenar()}
+                          className="OrderButton"
+                        >
+                          Marchar pedido!
+                        </Button>
+          </Grid>
+        </Grid>
+          
+          
+          
+        
         <DialogOperacion
           open={this.state.openDialog}
           handleClose={this.handleDialogClose}
