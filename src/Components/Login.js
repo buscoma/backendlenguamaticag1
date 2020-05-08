@@ -95,7 +95,7 @@ export default function Login(props){
                 type="submit"
                 color="primary"
               >
-                Log in
+                Iniciar
               </Button>
               </Grid>
               <Grid item xs={12} justify="center" alignItems="center" style={{textAlign:'center'}}>
@@ -108,7 +108,7 @@ export default function Login(props){
                   onClick={() => handleRegister()}
                   color="secondary"
                 >
-                  Register
+                  Registrarse
                 </Button>
               </Grid>
             </Grid>

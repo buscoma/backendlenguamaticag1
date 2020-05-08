@@ -10,7 +10,7 @@ export default function LandingPage() {
     return (
         <div>
             <NavBar User={user}/>
-            <div className="LenguaMatica"> Juego de Lengua!</div>
+            <div className="LenguaMatica"> Juego de Matemática!</div>
             <div className="mainBox">
                 <DobleBoton />     
             </div>
