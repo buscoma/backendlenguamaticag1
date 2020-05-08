@@ -85,92 +85,108 @@ export default function TableResponsive() {
   const [setErrors] = useState(false);
   const [loading, setLoading] = useState(true);
   const [row, setRow] = useState([]);
-
-  async function fetchApi() {
-    try {
-      setLoading(true);
-      const res = await fetch(url);
-      await res.json().then((json) => {
-        setRow(json);
-        console.log(json);
-      });
-    } catch (e) {
-      setErrors(e);
-    } finally {
-      setLoading(false);
+  
+    async function fetchApi() {
+      try {
+        setLoading(true);
+        const res = await fetch(url);
+        await res.json()
+          .then(json => { setRow(json); console.log(json)});
+      } catch (e) {
+        setErrors(e);
+      } finally {
+        setLoading(false);
+      }
     }
-  }
-  useEffect(() => {
-    fetchApi();
-    setRefresh(false);
-  }, [refresh]);
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {loading ? (
-        "Loading"
-      ) : (
-        <Container maxWidth="md">
-          <Grid container wrap="wrap" spacing={2}>
-            <Grid item xs={12} md={12}>
-              <Typography variant="h3" style={{ textAlign: "Left" }} noWrap>
-                {" "}
-                Mi Raking{" "}
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <AutoGridNoWrap
-                posicion={row[2].posicion}
-                nombre={row[2].nombre}
-                puntos={row[2].puntos}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h3" style={{ textAlign: "Left" }} noWrap>
-                {" "}
-                Raking{" "}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={6} style={{ textAlign: "Left" }}>
-              <Grid
-                container
-                justify="center"
-                alignItems="flex-end"
-                wrap="wrap"
-                spacing={2}
-              >
-                <Grid item xs={9}>
-                  <TextField
-                    id="standard-search"
-                    label="Buscate a tus amigos"
-                    fullWidth
-                    type="search"
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <Button variant="outlined" size="medium" color="primary">
-                    BUSCAR
-                  </Button>
+  
+    // useEffect(() => {
+    //     fetchApi();
+    //     setRefresh(false);
+    //   }, [refresh]);
+      
+    const rowHard = [
+        {
+            "id":"1",
+            "nombre":"Juan",
+            "puntos":2000,
+            "posicion": 1
+        },
+        {
+            "id":"2",
+            "nombre":"Jose",
+            "puntos":4000,
+            "posicion": 2
+        },
+        {
+            "id":"3",
+            "nombre":"Ernesto",
+            "puntos":400,
+            "posicion": 3
+        },    
+        {
+            "id":"4",
+            "nombre":"Mana",
+            "puntos":10000,
+            "posicion": 4
+        },    
+        {
+            "id":"5",
+            "nombre":"Nancy",
+            "puntos":100,
+            "posicion": 5
+        },    
+        {
+            "id":"6",
+            "nombre":"Mana",
+            "puntos":10000,
+            "posicion": 6
+        },    
+        {
+            "id":"7",
+            "nombre":"Lucas",
+            "puntos":5540,
+            "posicion": 7
+        },    
+        {
+            "id":"8",
+            "nombre":"Miriam",
+            "puntos":9863,
+            "posicion": 8
+        }        
+    ];
+    
+    return (
+      <div style={{  display: 'flex', alignItems:'center',justifyContent:'center'}}>
+        {loading ? "Loading" : 
+          <Container maxWidth='md'> 
+            <Grid container wrap="wrap" spacing={2}>
+              <Grid item xs={12} md={12} >
+                <Typography  variant="h3" style={{textAlign:'Left'}} noWrap> Mi Raking </Typography>
+              </Grid>
+              <Grid item xs={12}  >
+                <AutoGridNoWrap posicion={row[2].posicion} nombre={row[2].nombre} puntos={row[2].puntos} />
+              </Grid>
+              <Grid item xs={12} md={6} >
+                <Typography  variant="h3" style={{textAlign:'Left'}} noWrap> Raking </Typography>
+              </Grid>
+              <Grid item xs={12} md={6} style={{textAlign:'Left'}} >
+                <Grid container justify="center" alignItems="flex-end" wrap="wrap" spacing={2}>
+                  <Grid item xs={9}>
+                    <TextField id="standard-search" label="Buscate a tus amigos" fullWidth type="search" />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button variant="outlined" size="medium" color="primary" >
+                      BUSCAR
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              {row.map((data) => (
-                <AutoGridNoWrap
-                  posicion={data.posicion}
-                  nombre={data.nombre}
-                  puntos={data.puntos}
-                />
-              ))}
-            </Grid>
-          </Grid>
-        </Container>
-      )}
-    </div>
-  );
+              <Grid item xs={12}  >
+                {rowHard.map((data) => 
+                <AutoGridNoWrap posicion={data.posicion} nombre={data.nombre} puntos={data.puntos} />)}
+              </Grid>
+            </Grid>          
+          </Container>}
+      </div>
+      );
 }
