@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-
 import { Button, Container, Typography } from "@material-ui/core";
 import { makeStyles,  ThemeProvider } from '@material-ui/core/styles';
 import { AuthContext } from "../Components/Auth.js";
@@ -8,25 +7,6 @@ import SignUp from "../Components/SignUp.js";
 import Background from "../Images/background.jpg";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {TitleH1, ButtomDefualt,ContainerCenter} from '../css/BaseStyle.js';
-
-
-const root = {
-  backgroundImage: `url(${Background})`,
-  backgroundSize: "cover",
-  height: "100vh",
-  display: "flex",
-  backgroundAttachment: "fixed",
-  backgroundRepeat: "no-repeat",
-};
-
-
-const useStyles = makeStyles({
-  root,
-  TitleH1,
-  label:ButtomDefualt,
-  container: ContainerCenter
-});
-
 
 export default function Home(props) {
   const root = {
@@ -37,8 +17,12 @@ export default function Home(props) {
     backgroundAttachment: "fixed",
     backgroundRepeat: "no-repeat",
   };
-
-  
+  const useStyles = makeStyles({
+    root,
+    TitleH1,
+    label:ButtomDefualt,
+    container: ContainerCenter
+  });
   const [dialogLogin, setDialogLogin] = useState(false);
   const [dialogSignUp, setDialogSignUp] = useState(false);
   const handleLoginClick = () => {
