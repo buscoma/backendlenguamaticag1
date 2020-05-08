@@ -1,0 +1,24 @@
+.BuildControls {
+    width: 100%;
+    background-color: #ffffffba;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: auto;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+
+@keyframes enable {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
