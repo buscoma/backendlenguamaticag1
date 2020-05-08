@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import {Math, Ranking} from '../Images';
-import BurgerBuilder from '../Images/BurgerBuilder.jpg'
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import {ContainerCenter, TitleH3,TextWhiteShadow, TextBold} from '../css/BaseStyle';
@@ -22,7 +21,7 @@ const images = [
         href: '/numero_a_palabra'
     },
     {
-        url: BurgerBuilder,
+        url: Math,
         title: 'Burger',
         width: '100%',
         href: '/burger_builder'
