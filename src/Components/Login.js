@@ -99,7 +99,7 @@ export default function Login(props){
               </Button>
               </Grid>
               <Grid item xs={12} justify="center" alignItems="center" style={{textAlign:'center'}}>
-                <Typography className={classes.TitleH2 + " " + classes.TextBold}>  Not registered yet? </Typography>
+                <Typography className={classes.TitleH2 + " " + classes.TextBold}>  No estas registrado? </Typography>
               </Grid>
               <Grid item xs={12} justify="center" alignItems="center" style={{textAlign:'center'}}>
                 <Button
