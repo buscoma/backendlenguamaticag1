@@ -29,7 +29,7 @@ const json = [
     },
     {
         name:'MathGameOne',
-        descripcion:''
+        descripcion:'Bienvenido a este juego. El objetivo es que toques los botones en orden asendente.Suerte'
     }
 ];
 
@@ -164,7 +164,7 @@ export default function DialogMessage(props) {
                                 color="primary" 
                                 href={values.volverPagAnterior}
                                 spacing={2} >
-                                volverPagAnterior
+                                Volver
                             </Button>
 						</Grid> : null}
                         {props.bienvenida  ? 
@@ -175,7 +175,7 @@ export default function DialogMessage(props) {
                                     color="primary" 
                                     onClick={props.show}
                                     spacing={2} >
-                                    volverPagAnterior
+                                    Jugar
                                 </Button>
                             </Grid> 
                         : null}
@@ -186,7 +186,7 @@ export default function DialogMessage(props) {
                                 href={values.volverJugar}
                                 color="primary" 
                                 spacing={2}>
-                                volverJugar
+                                Jugar otra vez
                             </Button>
 						</Grid>: null}
                         { values.siguienteNivel ?<Grid item xs={12} sm={6} >
@@ -196,7 +196,7 @@ export default function DialogMessage(props) {
                                 href={values.siguienteNivel}
                                 color="primary" 
                                 spacing={2}>
-                                siguienteNivel
+                                Jugar siguiente nivel
                             </Button>
 						</Grid>: null}
 					</Grid>
