@@ -101,7 +101,58 @@ export default function TableResponsive(){
         fetchApi();
         setRefresh(false);
       }, [refresh]);
-
+      
+    const rowHard = [
+        {
+            "id":"1",
+            "nombre":"Juan",
+            "puntos":2000,
+            "posicion": 1
+        },
+        {
+            "id":"2",
+            "nombre":"Jose",
+            "puntos":4000,
+            "posicion": 2
+        },
+        {
+            "id":"3",
+            "nombre":"Ernesto",
+            "puntos":400,
+            "posicion": 3
+        },    
+        {
+            "id":"4",
+            "nombre":"Mana",
+            "puntos":10000,
+            "posicion": 4
+        },    
+        {
+            "id":"5",
+            "nombre":"Nancy",
+            "puntos":100,
+            "posicion": 5
+        },    
+        {
+            "id":"6",
+            "nombre":"Mana",
+            "puntos":10000,
+            "posicion": 6
+        },    
+        {
+            "id":"7",
+            "nombre":"Lucas",
+            "puntos":5540,
+            "posicion": 7
+        },    
+        {
+            "id":"8",
+            "nombre":"Miriam",
+            "puntos":9863,
+            "posicion": 8
+        }        
+    ];
+    
     return (
       <div style={{  display: 'flex', alignItems:'center',justifyContent:'center'}}>
         {loading ? "Loading" : 
@@ -129,7 +180,7 @@ export default function TableResponsive(){
                 </Grid>
               </Grid>
               <Grid item xs={12}  >
-                {row.map((data) => 
+                {rowHard.map((data) => 
                 <AutoGridNoWrap posicion={data.posicion} nombre={data.nombre} puntos={data.puntos} />)}
               </Grid>
             </Grid>          
