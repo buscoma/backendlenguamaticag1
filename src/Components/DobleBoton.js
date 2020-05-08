@@ -3,18 +3,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import {Math, Ranking} from '../Images';
+import BurgerBuilder from '../Images/BurgerBuilder.jpg'
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import {ContainerCenter, TitleH3,TextWhiteShadow, TextBold} from '../css/BaseStyle';
 
 const images = [
     {
         url: Math,
         title: 'Matemática',
-        width: '25%',
+        width: '100%',
         href: '/math_game_one'
+    },
+    {
+        url: Math,
+        title: 'Numero en palabra',
+        width: '100%',
+        href: '/numero_a_palabra'
+    },
+    {
+        url: BurgerBuilder,
+        title: 'Burger',
+        width: '100%',
+        href: '/burger_builder'
     },
     {
         url: Ranking,
         title: 'Ranking',
-        width: '25%',
+        width: '100%',
         href: '/ranking_page'
     },
 ];
@@ -23,13 +39,16 @@ const useStyles = makeStyles((theme) => ({
     root: {
         verticalAlign: 'center'
     },
-
+    ContainerCenter,
+    TitleH3,
+    TextBold,
+    TextWhiteShadow,
     image: {
         position: 'relative',
         height: 200,
         [theme.breakpoints.down('xs')]: {
             width: '100% !important', // Overrides inline-style
-            height: 50,
+            height: 100,
         },
         '&:hover, &$focusVisible': {
             zIndex: 1,
@@ -103,36 +122,39 @@ export default function DobleBoton() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            {images.map((image) => (
-                <ButtonBase
-                    focusRipple
-                    key={image.title}
-                    className={classes.image}
-                    focusVisibleClassName={classes.focusVisible}
-                    style={{
-                        width: image.width,
-                    }}
-                    href={image.href}
-                >
-                    <span className={classes.imageSrc}
-                        style={{ backgroundImage: `url(${image.url})`,}}    />
-                    <span className={classes.imageBackdrop} />
-                    <span className={classes.imageButton}>
-
-                        <Typography
-                            component="span"
-                            variant="subtitle1"
-                            color="inherit"
-                            className={classes.imageTitle}
+        <Container className={classes.ContainerCenter}>
+            <Grid container spacing={2}  alignItems="center" >           
+                {images.map((image) => (
+                    <Grid item xs={12} md={3}  >
+                        <ButtonBase
+                            focusRipple
+                            key={image.title}
+                            className={classes.image}
+                            focusVisibleClassName={classes.focusVisible}
+                            style={{
+                                width: image.width,
+                            }}
+                            href={image.href}
                         >
-                            {image.title}
-                            <span className={classes.imageMarked} />
-                        </Typography>
-                    </span>
-                </ButtonBase>
-            ))}
+                            <span className={classes.imageSrc}
+                                style={{ backgroundImage: `url(${image.url})`,}}    />
+                            <span className={classes.imageBackdrop} />
+                            <span className={classes.imageButton}>
 
-        </div>
+                                <Typography
+                                    component="span"
+                                    variant="subtitle1"
+                                    color="inherit"
+                                    className={classes.imageTitle + " "+ classes.TitleH2 + " " + classes.TextBold + " " + classes.TextWhiteShadow}
+                                >
+                                    {image.title}
+                                    <span className={classes.imageMarked} />
+                                </Typography>
+                            </span>
+                        </ButtonBase>
+                    </Grid>
+                ))}
+            </Grid>
+        </Container>
     );
 }

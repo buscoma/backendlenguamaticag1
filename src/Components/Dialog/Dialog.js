@@ -168,7 +168,7 @@ export default function DialogMessage(props) {
                             </Button>
 						</Grid> : null}
                         {props.bienvenida  ? 
-                            <Grid item xs={12} sm={6} style={{maxHeight:'100px'}} >
+                            <Grid item xs={3} sm={6} style={{maxHeight:'100px'}} >
                                 <Button 
                                     variant="contained"
                                     size="large" 
@@ -179,7 +179,7 @@ export default function DialogMessage(props) {
                                 </Button>
                             </Grid> 
                         : null}
-						{ values.volverJugar ?<Grid item xs={12} sm={6} >
+						{ values.volverJugar ?<Grid item xs={3} sm={6} >
                             <Button 
                                 variant="contained" 
                                 size="large" 
@@ -189,7 +189,7 @@ export default function DialogMessage(props) {
                                 Jugar otra vez
                             </Button>
 						</Grid>: null}
-                        { values.siguienteNivel ?<Grid item xs={12} sm={6} >
+                        { values.siguienteNivel ?<Grid item xs={6} sm={12} >
                             <Button 
                                 variant="contained" 
                                 size="large" 
