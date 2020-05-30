@@ -26,7 +26,7 @@ app.use('/api', apiRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-//onsole.log("processENV",process.env);
+
 if (process.env.NODE_ENV === 'Development') {
   require('./config').config();
 }
