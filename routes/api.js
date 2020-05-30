@@ -1,8 +1,17 @@
-/**ROUTE USER APIs. */
 var express = require('express')
-
 var router = express.Router()
-var users = require('./api/user.route')
+var UserController = require('../controllers/users');
+var users = require('./api/users')
+var comprensionLectora = require('./api/comprensionLectora')
+
+// Authentication
+router.post('/registration', UserController.createUser)
+router.post('/login', UserController.loginUser)
+
+// Users api
 router.use('/users', users);
+
+// compresionLectora api
+router.use('/comprensionLectora', comprensionLectora);
 
 module.exports = router;
