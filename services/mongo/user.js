@@ -82,14 +82,18 @@ exports.loginUser = async function (user) {
                 name: user.name
             });
         }
-        var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
-        if (!passwordIsValid) throw Error("Invalid username/password")
-        var token = jwt.sign({
-            id: _details._id
-        }, process.env.SECRET, {
-            expiresIn: '24h'
-        });
-        return token;
+        if (_details) {
+            var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
+            if (!passwordIsValid) throw Error("Invalid password")
+            var token = jwt.sign({
+                id: _details._id
+            }, process.env.SECRET, {
+                expiresIn: '24h'
+            });
+            return token;
+        } else {
+            throw Error("Invalid name/email or password")
+        }
     } catch (e) {
         throw Error(e.message)
     }
