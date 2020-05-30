@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api'); //Custom
 var bluebird = require('bluebird');
 var fs = require('fs');
@@ -24,7 +23,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', apiRouter);
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 
 if (process.env.NODE_ENV === 'Development') {
