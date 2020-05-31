@@ -1,9 +1,9 @@
-var CompresionLectoraService = require("../services/mongo/comprensionLectora");
+const PalabrasPerdidasService = require("../services/mongo/palabrasPerdidas");
 
 exports.getNivel = async function (req, res, _) {
     var nivel = req.query.nivel ? req.query.nivel : 1;
     try {
-        var nivel = await CompresionLectoraService.getNivel(nivel);
+        var nivel = await PalabrasPerdidasService.getNivel(nivel);
         return res
             .status(200)
             .json({

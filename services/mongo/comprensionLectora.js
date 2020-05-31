@@ -3,8 +3,8 @@ var helper = require('../helpers/helpers');
 
 exports.getNivel = async function (nivel) {
     var query = {
-        nivel: nivel
-    }
+        nivel: nivel,
+    };
     try {
         var nivel = await ComprensionLectora.find(query);
         return helper.getRandomDocument(nivel);

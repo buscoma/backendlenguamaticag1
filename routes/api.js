@@ -1,21 +1,25 @@
-var express = require('express');
-var UserController = require('../controllers/users');
-var users = require('./api/users');
-var comprensionLectora = require('./api/comprensionLectora');
-var juegoNumAPalabra = require('./api/juegoNumAPalabra');
-var authenticateJWT = require('../auth/authenticateJWT');
+const express = require("express");
+const UserController = require("../controllers/users");
+const users = require("./api/users");
+const comprensionLectora = require("./api/comprensionLectora");
+const juegoNumAPalabra = require("./api/juegoNumAPalabra");
+const palabrasPerdidas = require("./api/palabrasPerdidas");
+const authenticateJWT = require("../auth/authenticateJWT");
 
-var router = express.Router();
+const router = express.Router();
 
 // Authentication
-router.post('/registration', authenticateJWT, UserController.createUser)
-router.post('/login', UserController.loginUser)
+router.post("/registration", authenticateJWT, UserController.createUser);
+router.post("/login", UserController.loginUser);
 
 // Users api
-router.use('/users', users);
+router.use("/users", users);
 
 // compresionLectora api
-router.use('/comprensionLectora', comprensionLectora);
+router.use("/comprensionLectora", comprensionLectora);
 // juegoNumAPalabra api
-router.use('/juegoNumAPalabra', juegoNumAPalabra);
+router.use("/juegoNumAPalabra", juegoNumAPalabra);
+// palabrasPerdidas api
+router.use("/palabrasPerdidas", palabrasPerdidas);
+
 module.exports = router;
