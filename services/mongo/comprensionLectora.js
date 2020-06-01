@@ -1,11 +1,11 @@
-var ComprensionLectora = require("../../models/mongo/comprensionLectora");
+let ComprensionLectora = require("../../models/mongo/comprensionLectora");
 
 exports.getNivel = async function (nivel) {
-    var query = {
+    let query = {
         nivel: nivel
-    }
+    };
     try {
-        var nivel = await ComprensionLectora.find(query);
+        let nivel = await ComprensionLectora.find(query);
         return nivel;
     } catch (e) {
         throw Error("Error al recuperar el nivel de ComprensionLectora");
