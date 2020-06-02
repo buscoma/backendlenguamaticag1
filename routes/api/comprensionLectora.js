@@ -1,7 +1,7 @@
-var express = require("express");
-var router = express.Router();
-var ComprensionLectoraController = require("../../controllers/comprensionLectora");
-var authenticateJWT = require("../../auth/authenticateJWT");
+let express = require("express");
+let router = express.Router();
+let ComprensionLectoraController = require("../../controllers/comprensionLectora");
+let authenticateJWT = require("../../auth/authenticateJWT");
 
 router.get("/", authenticateJWT, ComprensionLectoraController.getNivel);
 
