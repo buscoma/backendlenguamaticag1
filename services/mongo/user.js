@@ -23,7 +23,7 @@ exports.createUser = async function (user) {
         var savedUser = await newUser.save();
         var token = jwt.sign({
             id: savedUser._id
-        }, process.env.SECRET, {
+        }, process.env.APP_JWT_SECRET, {
             expiresIn: '24h'
         });
         return token;
@@ -87,7 +87,7 @@ exports.loginUser = async function (user) {
             if (!passwordIsValid) throw Error("Invalid password")
             var token = jwt.sign({
                 id: _details._id
-            }, process.env.SECRET, {
+            }, process.env.APP_JWT_SECRET, {
                 expiresIn: '24h'
             });
             return token;
