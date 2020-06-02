@@ -4,8 +4,9 @@ const users = require("./api/users");
 const comprensionLectora = require("./api/comprensionLectora");
 const juegoNumAPalabra = require("./api/juegoNumAPalabra");
 const palabrasPerdidas = require("./api/palabrasPerdidas");
+const burgerBuilder = require("./api/burgerBuilder");
 const authenticateJWT = require("../auth/authenticateJWT");
-let player = require('./api/player');
+let player = require("./api/player");
 const router = express.Router();
 
 // Authentication
@@ -21,8 +22,9 @@ router.use("/comprensionLectora", comprensionLectora);
 router.use("/juegoNumAPalabra", juegoNumAPalabra);
 // palabrasPerdidas api
 router.use("/palabrasPerdidas", palabrasPerdidas);
-
 // player api
-router.use('/player', player);
+router.use("/player", player);
+// burgerBuilder api
+router.use("/burgerBuilder", burgerBuilder);
 
 module.exports = router;
