@@ -28,28 +28,18 @@ exports.PlayerSignUp = async function (player) {
         });
         let savedPlayer = await newPlayer.save();
         playerRefresh(savedPlayer._id);
-        return {id: savedPlayer._id, points: newRanking.points, gameStatus: newRanking.gameStatus};
+        return {points: newRanking.points, gameStatus: newRanking.gameStatus};
     } else {
         throw Error("User already exists")
     }
 }
 
-exports.PlayerSignIn = async function (player){
-    let playerRetrieved;
-    if (player.email) {
-        playerRetrieved = await Player.findOne({
-            email: player.email
-        });
-    }  else {
-        playerRetrieved = await Player.findOne({
-            name: player.name
-        });
-    }
+exports.PlayerDetails = async function (player){
+    let playerRetrieved = await Player.findById(player.id);
     if (playerRetrieved) {
-        playerRefresh(playerRetrieved._id);
-        if (bcrypt.compareSync(player.password, playerRetrieved.password)) {
+        if (bcrypt.compareSync(player.password, playerRetrieved.password)) { // REVISAR DESDE ACA
             let playerRanking = await RankingService.getPlayerRanking(playerRetrieved);
-            return {id: playerRetrieved._id, points: playerRanking.points, gameStatus: playerRanking.gameStatus};
+            return {points: playerRanking.points, gameStatus: playerRanking.gameStatus};
         } else {
             throw Error("Invalid name/email or password");
         }
@@ -59,7 +49,7 @@ exports.PlayerSignIn = async function (player){
 }
 
 exports.PlayersRankings = async function() {
-    playersRetrieved = await Player.find();
+    let playersRetrieved = await Player.find();
     let result = [];
     for (let player of playersRetrieved) {
         let playerRanking = await RankingService.getPlayerRanking(player);
@@ -69,23 +59,12 @@ exports.PlayersRankings = async function() {
 }
 
 exports.levelUp = async function (player_id , game, level) {
-    playerRetrieved = await Player.findById(player_id);
+    let playerRetrieved = await Player.findById(player_id);
     if (!playerRetrieved){
         throw Error("Player not found");
     } else {
-        playerRefresh(player_id);
         let rankingUpdated = await RankingService.playerWinGameLevel(playerRetrieved, game, level);
-        return {id: player_id, points: rankingUpdated.points, gameStatus: rankingUpdated.gameStatus};
-    }
-}
-
-exports.playerLogout = async function(player_id) {
-    playerRetrieved = await Player.findById(player_id);
-    if (!playerRetrieved){
-        throw Error("Player not found");
-    } else {
-        playerRetrieved.playerLastToken = null;
-        playerRetrieved.save();
+        return {points: rankingUpdated.points, gameStatus: rankingUpdated.gameStatus};
     }
 }
 
@@ -94,26 +73,14 @@ exports.playerRefresh = async function(player_id) {
     if (!playerRetrieved){
         throw Error("Player not found");
     } else {
-        if (playerRetrieved.playerLastToken) {
-            if (jwt.verify(playerRetrieved.playerLastToken, process.env.PLAYER_JWT_SECRET)) {
-                let playerToken = playerJWT(playerRetrieved._id);
-                playerRetrieved.playerLastToken = playerToken;
-                playerRetrieved.save();
-            } else {
-                throw Error("Player expired")
-            }
-        } else { // Player first time
-            let playerToken = playerJWT(playerRetrieved._id);
-            playerRetrieved.playerLastToken = playerToken;
-            playerRetrieved.save();
-        }
+        return playerrJWT(player_id);
     }
 }
 
-function playerJWT(player_id) {
+playerrJWT = (player_id) => {
     return jwt.sign({
         id: player_id
     }, process.env.PLAYER_JWT_SECRET, {
-        expiresIn: '1h'
+        expiresIn: '24h'
     });
 }

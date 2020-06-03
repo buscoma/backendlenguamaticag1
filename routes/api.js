@@ -16,14 +16,15 @@ router.post("/login", UserController.loginUser);
 // Users api
 router.use("/users", users);
 
+// player api
+router.use("/player", player);
+
 // compresionLectora api
 router.use("/comprensionLectora", comprensionLectora);
 // juegoNumAPalabra api
 router.use("/juegoNumAPalabra", juegoNumAPalabra);
 // palabrasPerdidas api
 router.use("/palabrasPerdidas", palabrasPerdidas);
-// player api
-router.use("/player", player);
 // burgerBuilder api
 router.use("/burgerBuilder", burgerBuilder);
 

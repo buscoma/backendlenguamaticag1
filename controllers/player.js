@@ -47,11 +47,11 @@ exports.getRanking = async function (_, res, _) {
 }
 
 exports.levelUp = async function (req, res, _) {
-    let player_id = req.query.player_id;
+    let player_id = req.player.id;
     let game = req.query.game;
     let level = req.query.level;
     if (!player_id || !game || !level) {
-        return res.status(400).json({message: "Must specify player_id game and level in params"});
+        return res.status(400).json({message: "Must specify game and level in params"});
     }
     try {
         let playerUpdated = await PlayerService.levelUp(player_id, game, level);
