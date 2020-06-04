@@ -41,8 +41,7 @@ exports.createRanking = async function () {
 }
 
 exports.getPlayerRanking = async function (player) {
-    let id = player.ranking;
-    let playerRanking = await Ranking.findById(id);
+    let playerRanking = await Ranking.findById(player.ranking).select('points gameStatus -_id');
     return playerRanking;
 }
 

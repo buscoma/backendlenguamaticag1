@@ -3,20 +3,13 @@ var RankingService = require('./ranking');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
-
-exports.PlayerSignUp = async function (player) {
-    let playerExists = false;
-    if (player.email) {
-        if (await Player.findOne({email: player.email})) {
-            playerExists = true;
-        }
-    }
-    if (player.name) {
-        if (await Player.findOne({name: player.name})) {
-            playerExists = true;
-        }
-    }
-    if (!playerExists){
+exports.PlayerSignUpSignIn = async function (player) {
+    let playerRetrieved, playerLoggedIn;
+    if (player.email) 
+        playerRetrieved = await Player.findOne({email: player.email});
+    else 
+        playerRetrieved = await Player.findOne({name: player.name});
+    if (!playerRetrieved){ // SignUp
         let hashedPassword = bcrypt.hashSync(player.password, 10);
         let newRanking = await RankingService.createRanking();
         let newPlayer = new Player({
@@ -26,26 +19,20 @@ exports.PlayerSignUp = async function (player) {
             date: Date(),
             ranking: newRanking.id
         });
-        let savedPlayer = await newPlayer.save();
-        playerRefresh(savedPlayer._id);
-        return {points: newRanking.points, gameStatus: newRanking.gameStatus};
-    } else {
-        throw Error("User already exists")
+        playerLoggedIn = await newPlayer.save();
+    } else { // SignIn
+        if (!bcrypt.compareSync(player.password, playerRetrieved.password))
+            throw Error("Invalid name or email and password");
+        else
+            playerLoggedIn = playerRetrieved;
     }
+    return playerrJWT(playerLoggedIn);
 }
 
 exports.PlayerDetails = async function (player){
     let playerRetrieved = await Player.findById(player.id);
-    if (playerRetrieved) {
-        if (bcrypt.compareSync(player.password, playerRetrieved.password)) { // REVISAR DESDE ACA
-            let playerRanking = await RankingService.getPlayerRanking(playerRetrieved);
-            return {points: playerRanking.points, gameStatus: playerRanking.gameStatus};
-        } else {
-            throw Error("Invalid name/email or password");
-        }
-    } else {
-        throw Error("User doesent exist");
-    }
+    let ranking = await RankingService.getPlayerRanking(playerRetrieved);
+    return ranking;
 }
 
 exports.PlayersRankings = async function() {
@@ -58,28 +45,14 @@ exports.PlayersRankings = async function() {
     return result
 }
 
-exports.levelUp = async function (player_id , game, level) {
-    let playerRetrieved = await Player.findById(player_id);
-    if (!playerRetrieved){
-        throw Error("Player not found");
-    } else {
-        let rankingUpdated = await RankingService.playerWinGameLevel(playerRetrieved, game, level);
-        return {points: rankingUpdated.points, gameStatus: rankingUpdated.gameStatus};
-    }
+exports.LevelUp = async function (player , game, level) {
+    let playerRetrieved = await Player.findById(player.id);
+    await RankingService.playerWinGameLevel(playerRetrieved, game, level);
 }
 
-exports.playerRefresh = async function(player_id) {
-    playerRetrieved = await Player.findById(player_id);
-    if (!playerRetrieved){
-        throw Error("Player not found");
-    } else {
-        return playerrJWT(player_id);
-    }
-}
-
-playerrJWT = (player_id) => {
+playerrJWT = (player) => {
     return jwt.sign({
-        id: player_id
+        id: player.id
     }, process.env.PLAYER_JWT_SECRET, {
         expiresIn: '24h'
     });
