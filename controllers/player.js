@@ -1,4 +1,4 @@
-let PlayerService = require('../services/mongo/player');
+let PlayerService = require('../services/player');
 
 exports.signUpSignIn = async function (req, res, _) {
     if (!req.body.password || (!req.body.email && !req.body.name)) {

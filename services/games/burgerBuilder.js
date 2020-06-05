@@ -1,4 +1,4 @@
-let BurgerBuilder = require("../../models/mongo/burgerBuilder");
+let BurgerBuilder = require("../../models/mongo/games/burgerBuilder");
 let helper = require("../helpers/helpers");
 
 exports.getNivel = async function (nivel) {

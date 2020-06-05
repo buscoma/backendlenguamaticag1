@@ -1,9 +1,9 @@
-var JuegoNumAPalabraService = require("../services/mongo/juegoNumAPalabra");
+var CompresionLectoraService = require("../../services/games/comprensionLectora");
 
 exports.getNivel = async function (req, res, _) {
     var nivel = req.query.nivel ? req.query.nivel : 1;
     try {
-        var nivel = await JuegoNumAPalabraService.getNivel(nivel);
+        var nivel = await CompresionLectoraService.getNivel(nivel);
         return res
             .status(200)
             .json({

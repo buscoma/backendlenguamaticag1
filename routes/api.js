@@ -1,8 +1,9 @@
 const express = require("express");
-const comprensionLectora = require("./api/comprensionLectora");
-const juegoNumAPalabra = require("./api/juegoNumAPalabra");
-const palabrasPerdidas = require("./api/palabrasPerdidas");
-const burgerBuilder = require("./api/burgerBuilder");
+const comprensionLectora = require("./api/games/comprensionLectora");
+const juegoNumAPalabra = require("./api/games/juegoNumAPalabra");
+const palabrasPerdidas = require("./api/games/palabrasPerdidas");
+const burgerBuilder = require("./api/games/burgerBuilder");
+const secuenciaNumeros = require("./api/games/secuenciaNumeros");
 const player = require("./api/player");
 const router = express.Router();
 
@@ -10,12 +11,14 @@ const router = express.Router();
 router.use("/player", player);
 
 // compresionLectora api
-router.use("/comprensionLectora", comprensionLectora);
+router.use("/games/comprensionLectora", comprensionLectora);
 // juegoNumAPalabra api
-router.use("/juegoNumAPalabra", juegoNumAPalabra);
+router.use("/games/juegoNumAPalabra", juegoNumAPalabra);
 // palabrasPerdidas api
-router.use("/palabrasPerdidas", palabrasPerdidas);
+router.use("/games/palabrasPerdidas", palabrasPerdidas);
 // burgerBuilder api
-router.use("/burgerBuilder", burgerBuilder);
+router.use("/games/burgerBuilder", burgerBuilder);
+// secuenciaNumeros api
+router.use("/games/secuenciaNumeros", secuenciaNumeros);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const JuegoNumAPalabra = require("../../models/mongo/juegoNumAPalabra");
+const JuegoNumAPalabra = require("../../models/mongo/games/juegoNumAPalabra");
 const helper = require('../helpers/helpers');
 
 exports.getNivel = async function (nivel) {

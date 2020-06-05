@@ -1,4 +1,4 @@
-const PalabrasPerdidas = require("../../models/mongo/palabrasPerdidas");
+const PalabrasPerdidas = require("../../models/mongo/games/palabrasPerdidas");
 const helper = require("../helpers/helpers");
 
 exports.getNivel = async function (nivel) {

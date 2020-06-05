@@ -1,4 +1,4 @@
-var ComprensionLectora = require("../../models/mongo/comprensionLectora");
+var ComprensionLectora = require("../../models/mongo/games/comprensionLectora");
 var helper = require('../helpers/helpers');
 
 exports.getNivel = async function (nivel) {

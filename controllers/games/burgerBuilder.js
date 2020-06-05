@@ -1,4 +1,4 @@
-var BurgerBuilderController = require("../services/mongo/burgerBuilder");
+var BurgerBuilderController = require("../../services/games/burgerBuilder");
 
 exports.getNivel = async function (req, res, _) {
     var nivel = req.query.nivel ? req.query.nivel : 1;

@@ -1,9 +1,9 @@
-const PalabrasPerdidasService = require("../services/mongo/palabrasPerdidas");
+var JuegoNumAPalabraService = require("../../services/games/juegoNumAPalabra");
 
 exports.getNivel = async function (req, res, _) {
     var nivel = req.query.nivel ? req.query.nivel : 1;
     try {
-        var nivel = await PalabrasPerdidasService.getNivel(nivel);
+        var nivel = await JuegoNumAPalabraService.getNivel(nivel);
         return res
             .status(200)
             .json({

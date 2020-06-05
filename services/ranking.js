@@ -1,4 +1,4 @@
-let Ranking = require('../../models/mongo/ranking');
+let Ranking = require('../models/mongo/ranking');
 
 exports.createRanking = async function () {
     let newRanking = new Ranking({

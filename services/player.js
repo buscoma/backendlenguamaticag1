@@ -1,4 +1,4 @@
-var Player = require('../../models/mongo/player');
+var Player = require('../models/mongo/player');
 var RankingService = require('./ranking');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
