@@ -13,9 +13,11 @@ var PalabrasCorrectasSchema = new mongoose.Schema(
         ]
     }
 );
+
 const PalabrasCorrectas = mongoose.model(
     "PalabrasCorrectas",
     PalabrasCorrectasSchema,
     "palabrasCorrectas"
 );
+
 module.exports = PalabrasCorrectas; 
