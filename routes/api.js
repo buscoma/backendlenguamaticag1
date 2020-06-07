@@ -11,17 +11,14 @@ const router = express.Router();
 // player api
 router.use("/player", player);
 
-// compresionLectora api
-router.use("/games/comprensionLectora", comprensionLectora);
-// juegoNumAPalabra api
-router.use("/games/juegoNumAPalabra", juegoNumAPalabra);
-// palabrasPerdidas api
-router.use("/games/palabrasPerdidas", palabrasPerdidas);
-// burgerBuilder api
-router.use("/games/burgerBuilder", burgerBuilder);
-// secuenciaNumeros api
-router.use("/games/secuenciaNumeros", secuenciaNumeros);
-// palabrasCorrectas api
-router.use("/games/palabrasCorrectas", palabrasCorrectas);
+// games api
+[
+	comprensionLectora,
+	juegoNumAPalabra,
+	palabrasPerdidas,
+	burgerBuilder,
+	secuenciaNumeros,
+	palabrasCorrectas,
+].forEach((juego) => router.use("/games", juego));
 
 module.exports = router;

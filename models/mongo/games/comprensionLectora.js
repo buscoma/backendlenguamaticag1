@@ -1,22 +1,20 @@
-var mongoose = require('mongoose')
+var mongoose = require("mongoose");
 
-var CompresionLectoraSchema = new mongoose.Schema(
-    {
-        nivel: Number,
-        pregunta: String,
-        respuestas: [
-        {
-            descripcion: String,
-            correcta: Boolean,
-        },
-        ],
-    }
-);
+var CompresionLectoraSchema = new mongoose.Schema({
+	nivel: Number,
+	pregunta: String,
+	respuestas: [
+		{
+			descripcion: String,
+			correcta: Boolean,
+		},
+	],
+});
 
 const CompresionLectora = mongoose.model(
-    "CompresionLectora",
-    CompresionLectoraSchema,
-    "comprensionLectora"
+	"CompresionLectora",
+	CompresionLectoraSchema,
+	"comprensionLectora"
 );
 
-module.exports = CompresionLectora; 
+module.exports = CompresionLectora;

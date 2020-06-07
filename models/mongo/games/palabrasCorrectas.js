@@ -1,23 +1,20 @@
-var mongoose = require('mongoose')
+var mongoose = require("mongoose");
 
-
-var PalabrasCorrectasSchema = new mongoose.Schema(
-    {
-        nivel: Number,
-        palabras : [
-            {
-                palabra: String,
-                esCorrecta: Boolean,
-                Correccion: String,
-            }
-        ]
-    }
-);
+var PalabrasCorrectasSchema = new mongoose.Schema({
+	nivel: Number,
+	palabras: [
+		{
+			palabra: String,
+			esCorrecta: Boolean,
+			Correccion: String,
+		},
+	],
+});
 
 const PalabrasCorrectas = mongoose.model(
-    "PalabrasCorrectas",
-    PalabrasCorrectasSchema,
-    "palabrasCorrectas"
+	"PalabrasCorrectas",
+	PalabrasCorrectasSchema,
+	"palabrasCorrectas"
 );
 
-module.exports = PalabrasCorrectas; 
+module.exports = PalabrasCorrectas;

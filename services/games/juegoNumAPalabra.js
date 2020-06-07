@@ -1,14 +1,14 @@
 const JuegoNumAPalabra = require("../../models/mongo/games/juegoNumAPalabra");
-const helper = require('../helpers/helpers');
+const helper = require("../helpers/helpers");
 
 exports.getNivel = async function (nivel) {
-    let query = {
-        nivel: nivel,
-    };
-    try {
-        let nivel = await JuegoNumAPalabra.find(query);
-        return helper.getRandomDocument(nivel);
-    } catch (e) {
-        throw Error("Error al recuperar el nivel de JuegoNumAPalabra");
-    }
+	let query = {
+		nivel: nivel,
+	};
+	try {
+		let nivel = await JuegoNumAPalabra.find(query);
+		return helper.getRandomDocument(nivel);
+	} catch (e) {
+		throw Error("Error al recuperar el nivel de JuegoNumAPalabra");
+	}
 };
