@@ -11,14 +11,8 @@ dotenv.config();
 
 var app = express();
 
-app.use(function(_, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Content-Type', 'application/json');
-  next();
-});
+let cors = require('cors');
+app.use(cors());
 
 app.use(logger('combined'));
 app.use(express.json());
