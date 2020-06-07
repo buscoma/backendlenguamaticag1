@@ -11,6 +11,15 @@ dotenv.config();
 
 var app = express();
 
+app.use(function(_, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Content-Type', 'application/json');
+  next();
+});
+
 app.use(logger('combined'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -19,6 +28,8 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use('/api', apiRouter);
 app.use(healtCheck);
+
+
 
 // Database connection
 mongoose.Promise = bluebird;
