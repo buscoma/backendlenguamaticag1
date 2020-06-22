@@ -36,7 +36,9 @@ exports.PlayerSignUpSignIn = async function (player) {
 exports.PlayerDetails = async function (player) {
 	let playerRetrieved = await Player.findById(player.id);
 	let ranking = await RankingService.getPlayerRanking(playerRetrieved);
-	return ranking;
+	return {name: playerRetrieved.name,
+			gameStatus: ranking.gameStatus,
+			points: ranking.points}
 };
 
 exports.PlayersRankings = async function () {
