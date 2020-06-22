@@ -1,7 +1,9 @@
 var Player = require("../models/mongo/player");
 var RankingService = require("./ranking");
 var bcrypt = require("bcryptjs");
-var jwt = require("jsonwebtoken");
+let jwt = require("../services/auth/authenticateJWT");
+let jwtRefresh = require("../services/auth/authenticateJWTRefresh");
+
 
 exports.PlayerSignUpSignIn = async function (player) {
 	let playerRetrieved, playerLoggedIn;
@@ -26,7 +28,9 @@ exports.PlayerSignUpSignIn = async function (player) {
 			throw Error("Invalid name or email and password");
 		else playerLoggedIn = playerRetrieved;
 	}
-	return playerrJWT(playerLoggedIn);
+	token = jwt.playerJWT(playerLoggedIn);
+	refresh = jwtRefresh.playerJWTRefresh(playerLoggedIn);
+	return {token: token, refresh: refresh};
 };
 
 exports.PlayerDetails = async function (player) {
@@ -48,16 +52,4 @@ exports.PlayersRankings = async function () {
 exports.LevelUp = async function (player, game, level) {
 	let playerRetrieved = await Player.findById(player.id);
 	await RankingService.playerWinGameLevel(playerRetrieved, game, level);
-};
-
-playerrJWT = (player) => {
-	return jwt.sign(
-		{
-			id: player.id,
-		},
-		process.env.PLAYER_JWT_SECRET,
-		{
-			expiresIn: "24h",
-		}
-	);
 };

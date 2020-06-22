@@ -1,11 +1,11 @@
 let express = require("express");
 let router = express.Router();
 let PalabrasCorrectasController = require("../../../controllers/games/palabrasCorrectas");
-let authenticateJWT = require("../../../services/auth/authenticateJWT");
+let jwt = require("../../../services/auth/authenticateJWT");
 
 router.get(
 	"/palabrasCorrectas",
-	authenticateJWT,
+	jwt.authenticateJWT,
 	PalabrasCorrectasController.getNivel
 );
 

@@ -12,8 +12,8 @@ exports.signUpSignIn = async function (req, res, _) {
 		password: req.body.password,
 	};
 	try {
-		let token = await PlayerService.PlayerSignUpSignIn(player);
-		return res.status(200).json({ token: token });
+		let response = await PlayerService.PlayerSignUpSignIn(player);
+		return res.status(200).json(response);
 	} catch (e) {
 		console.log(e);
 		return res.status(401).json({ message: e.message });

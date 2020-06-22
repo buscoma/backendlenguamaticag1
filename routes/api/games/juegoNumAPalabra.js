@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var JuegoNumAPalabraController = require("../../../controllers/games/juegoNumAPalabra");
-var authenticateJWT = require("../../../services/auth/authenticateJWT");
+var jwt = require("../../../services/auth/authenticateJWT");
 
 router.get(
 	"/juegoNumAPalabra",
-	authenticateJWT,
+	jwt.authenticateJWT,
 	JuegoNumAPalabraController.getNivel
 );
 

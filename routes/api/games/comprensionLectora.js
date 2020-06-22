@@ -1,11 +1,11 @@
 let express = require("express");
 let router = express.Router();
 let ComprensionLectoraController = require("../../../controllers/games/comprensionLectora");
-let authenticateJWT = require("../../../services/auth/authenticateJWT");
+let jwt = require("../../../services/auth/authenticateJWT");
 
 router.get(
 	"/comprensionLectora",
-	authenticateJWT,
+	jwt.authenticateJWT,
 	ComprensionLectoraController.getNivel
 );
 

@@ -1,6 +1,6 @@
-var jwt = require("jsonwebtoken");
+let jwt = require("jsonwebtoken");
 
-var authenticateJWT = function (req, res, next) {
+let authenticateJWT = function (req, res, next) {
 	const authHeader = req.headers.authorization;
 	if (authHeader) {
 		const token = authHeader.split(" ")[1];
@@ -16,4 +16,16 @@ var authenticateJWT = function (req, res, next) {
 	}
 };
 
-module.exports = authenticateJWT;
+let playerJWT = function (player) {
+	return jwt.sign(
+		{
+			id: player.id,
+		},
+		process.env.PLAYER_JWT_SECRET,
+		{
+			expiresIn: "1h",
+		}
+	);
+};
+
+module.exports = { authenticateJWT, playerJWT };

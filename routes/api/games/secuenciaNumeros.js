@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 var SecuenciaNumerosController = require("../../../controllers/games/secuenciaNumeros");
-var authenticateJWT = require("../../../services/auth/authenticateJWT");
+var jwt = require("../../../services/auth/authenticateJWT");
 
 router.get(
 	"/secuenciaNumeros",
-	authenticateJWT,
+	jwt.authenticateJWT,
 	SecuenciaNumerosController.getNivel
 );
 
