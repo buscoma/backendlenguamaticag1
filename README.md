@@ -1,6 +1,6 @@
-# LenguaG1
+# LenguaMáticaG1
 
-![LenguaG1](https://raw.githubusercontent.com/buscoma/lenguag1/master/public/logox256.png)
+![LenguaMáticaG1](https://raw.githubusercontent.com/buscoma/lenguag1/master/public/logox256.png)
 
 ## Aplicación de Lengua
 
@@ -21,4 +21,5 @@ PLAYER_JWT_SECRET=YOUR_PLAYERS_TOKEN_SECRET
 PLAYER_JWT_SECRET_REFRESH=YOUR_PLAYERS_REFRESH_TOKEN_SECRET
 DATABASE=MONGO_DB_CONNECTION_STRING
 
-[https://lenguag1.herokuapp.com/](https://lenguag1.herokuapp.com/)
+[https://backendlenguamaticag1.herokuapp.com/](https://backendlenguamaticag1.herokuapp.com/)
+[https://lenguamaticag1.herokuapp.com/](https://lenguamaticag1.herokuapp.com/)
