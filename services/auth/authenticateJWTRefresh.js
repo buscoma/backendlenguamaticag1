@@ -1,7 +1,7 @@
 var jwt = require("jsonwebtoken");
 var jwtP = require("./authenticateJWT");
 
-var authenticateJWTRefresh = function (req, res, _) {
+exports.authenticateJWTRefresh = function (req, res, _) {
 	const authHeader = req.headers.authorization;
 	if (authHeader) {
         const token = authHeader.split(" ")[1];
@@ -18,7 +18,7 @@ var authenticateJWTRefresh = function (req, res, _) {
 	}
 };
 
-var playerJWTRefresh = function (player) {
+exports.playerJWTRefresh = function (player) {
 	return jwt.sign(
 		{
 			id: player.id,
@@ -29,5 +29,3 @@ var playerJWTRefresh = function (player) {
 		}
 	)
 };
-
-module.exports = {authenticateJWTRefresh, playerJWTRefresh};

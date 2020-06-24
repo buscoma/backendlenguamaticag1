@@ -1,22 +1,32 @@
 let jwt = require("jsonwebtoken");
+let PlayerService = require("../player")
 
-let authenticateJWT = function (req, res, next) {
+exports.authenticateJWT = function (req, res, next) {
 	const authHeader = req.headers.authorization;
 	if (authHeader) {
 		const token = authHeader.split(" ")[1];
-		jwt.verify(token, process.env.PLAYER_JWT_SECRET, (err, player) => {
+		let secret = process.env.PLAYER_JWT_SECRET
+		jwt.verify(token, secret, async function (err, player) {
 			if (err) {
 				return res.sendStatus(403);
 			}
-			req.player = player;
-			next();
+			PlayerService.PlayerLastToken(player).then(
+				playerLastToken => {
+					if (playerLastToken == token){
+						req.player = player;
+						next();
+					}else {
+						res.sendStatus(401);
+					}
+				}
+			)
 		});
-	} else {
+	}else {
 		res.sendStatus(401);
 	}
 };
 
-let playerJWT = function (player) {
+exports.playerJWT = function (player) {
 	return jwt.sign(
 		{
 			id: player.id,
@@ -27,5 +37,3 @@ let playerJWT = function (player) {
 		}
 	);
 };
-
-module.exports = { authenticateJWT, playerJWT };

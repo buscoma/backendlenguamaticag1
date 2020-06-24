@@ -20,6 +20,11 @@ exports.signUpSignIn = async function (req, res, _) {
 	}
 };
 
+exports.logout = async function (req, res, _) {
+	await PlayerService.PlayerLogout(req.player)
+	return res.status(200).json({ message: "Success" })
+}
+
 exports.getRanking = async function (_, res, _) {
 	try {
 		let ranking = await PlayerService.PlayersRankings();

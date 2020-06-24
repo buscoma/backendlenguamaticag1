@@ -1,8 +1,8 @@
 var Player = require("../models/mongo/player");
 var RankingService = require("./ranking");
 var bcrypt = require("bcryptjs");
-let jwt = require("../services/auth/authenticateJWT");
-let jwtRefresh = require("../services/auth/authenticateJWTRefresh");
+let jwt = require("./auth/authenticateJWT");
+let jwtRefresh = require("./auth/authenticateJWTRefresh");
 
 
 exports.PlayerSignUpSignIn = async function (player) {
@@ -28,9 +28,11 @@ exports.PlayerSignUpSignIn = async function (player) {
 			throw Error("Invalid name or email and password");
 		else playerLoggedIn = playerRetrieved;
 	}
-	token = jwt.playerJWT(playerLoggedIn);
-	refresh = jwtRefresh.playerJWTRefresh(playerLoggedIn);
-	return {token: token, refresh: refresh};
+	let accessToken = jwt.playerJWT(playerLoggedIn);
+	playerLoggedIn.last_token = accessToken;
+	playerLoggedIn.save();
+	let refreshToken = jwtRefresh.playerJWTRefresh(playerLoggedIn);
+	return {accessToken: accessToken, refreshToken: refreshToken};
 };
 
 exports.PlayerDetails = async function (player) {
@@ -40,6 +42,17 @@ exports.PlayerDetails = async function (player) {
 			gameStatus: ranking.gameStatus,
 			points: ranking.points}
 };
+
+exports.PlayerLastToken = async function (player) {
+	let playerRetrieved = await Player.findById(player.id);
+	return playerRetrieved.last_token;
+};
+
+exports.PlayerLogout = async function (player) {
+	let playerRetrieved = await Player.findById(player.id);
+	playerRetrieved.last_token = null;
+	playerRetrieved.save();
+}
 
 exports.PlayersRankings = async function () {
 	let playersRetrieved = await Player.find();
