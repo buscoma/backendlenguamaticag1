@@ -33,7 +33,7 @@ exports.playerJWT = function (player) {
 		},
 		process.env.PLAYER_JWT_SECRET,
 		{
-			expiresIn: "1h",
+			expiresIn: 30,
 		}
 	);
 };
