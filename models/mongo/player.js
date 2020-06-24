@@ -7,6 +7,7 @@ var PlayerSchema = new mongoose.Schema({
 	password: String,
 	date: Date,
 	last_token: String,
+	avatar: String,
 	ranking: mongoose.ObjectId,
 });
 

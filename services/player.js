@@ -3,6 +3,7 @@ var RankingService = require("./ranking");
 var bcrypt = require("bcryptjs");
 let jwt = require("./auth/authenticateJWT");
 let jwtRefresh = require("./auth/authenticateJWTRefresh");
+let helpers = require("./helpers/helpers")
 
 
 exports.PlayerSignUpSignIn = async function (player) {
@@ -20,6 +21,7 @@ exports.PlayerSignUpSignIn = async function (player) {
 			password: hashedPassword,
 			date: Date(),
 			ranking: newRanking.id,
+			avatar: helpers.getRandomAvatar()
 		});
 		playerLoggedIn = await newPlayer.save();
 	} else {
@@ -39,7 +41,7 @@ exports.PlayerDetails = async function (player) {
 	let playerRetrieved = await Player.findById(player.id);
 	let ranking = await RankingService.getPlayerRanking(playerRetrieved);
 	return {name: playerRetrieved.name,
-			gameStatus: ranking.gameStatus,
+			avatar: playerRetrieved.avatar,
 			points: ranking.points}
 };
 
