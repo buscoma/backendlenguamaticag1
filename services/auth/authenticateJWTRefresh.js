@@ -25,7 +25,7 @@ exports.playerJWTRefresh = function (player) {
 		},
 		process.env.PLAYER_JWT_SECRET_REFRESH,
 		{
-			expiresIn: "1h",
+			expiresIn: "1d",
 		}
 	)
 };
