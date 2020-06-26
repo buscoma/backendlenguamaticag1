@@ -10,9 +10,11 @@ exports.getRandomSecuence = function (nivel) {
         let secuence = [];
         while (secuence.length < 8) {
             var r = Math.floor(Math.random() * 50 * nivel) + 1;
-            if (secuence.indexOf(r) === -1 && !secuence.includes(r)) secuence.push({ id: r });
+            if (secuence.indexOf(r) === -1 && !secuence.includes(r)){ 
+                secuence.push(r);
+            };
         }
-        return secuence;
+        return secuence.map((n) => ({id: n}));
     } else {
         throw Error(
             "Error al recuperar el nivel de SecuenciaNumeros. El nivel " +
