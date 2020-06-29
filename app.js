@@ -10,6 +10,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 var app = express();
+app.use(express.static('public'));
 
 let cors = require("cors");
 app.use(cors());
@@ -24,6 +25,12 @@ app.use(
 app.use(cookieParser());
 app.use("/api", apiRouter);
 app.use(healtCheck);
+
+
+
+
+//Serves all the request which includes /images in the url from Images folder
+app.use('/images',express.static(__dirname + '/images'));
 
 // Database connection
 mongoose.Promise = bluebird;

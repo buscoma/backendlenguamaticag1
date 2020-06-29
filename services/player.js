@@ -5,7 +5,6 @@ let jwt = require("./auth/authenticateJWT");
 let jwtRefresh = require("./auth/authenticateJWTRefresh");
 let helpers = require("./helpers/helpers")
 
-
 exports.PlayerSignUpSignIn = async function (player) {
 	let playerRetrieved, playerLoggedIn;
 	if (player.email)
