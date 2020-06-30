@@ -53,9 +53,6 @@ exports.levelUp = async function (req, res, _) {
 };
 
 exports.playerDetails = async function (req, res, _) {
-	console.log("player");
-	console.log(req.player);
-	console.log("player");
 	try {
 		let playerDetails = await PlayerService.PlayerDetails(req.player);
 		return res.status(200).json({ data: playerDetails });
